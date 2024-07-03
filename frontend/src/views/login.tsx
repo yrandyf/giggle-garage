@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { Link, Navigate } from 'react-router-dom';
 import { useStateContext } from '../context/AuthProvider';
+import api from "../api/api";
 
 export default function Login() {
   const emailRef = useRef();
@@ -13,8 +14,9 @@ export default function Login() {
     const payload = {
         email: emailRef.current.value,
         password: passwordRef.current.value,
+        remember : false
     }
-    axiosClient.post("/login",payload).then(({data})=>{
+    api.login(payload).then(({data})=>{
           setUser(data.user);
           setToken(data.token);
     }).catch(err => {

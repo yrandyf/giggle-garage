@@ -19,10 +19,11 @@ export default function register(){
             email: emailRef.current.value,
             password: passwordRef.current.value,
         }
-        api.post("/register",payload).then(({data}) => {
+        api.signUp(payload).then(({data}) => {
             setUser(data.user);
             setToken(data.token);
         }).catch(err => {
+            console.log(err);
             const response = err.response;
             if(response && response.status === 422){
                 console.log(response.data.errors);

@@ -28,4 +28,16 @@ axiosClient.interceptors.response.use(
     }
 );
 
-export default axiosClient;
+const routes = {
+    signUp(data: object) {
+        return axiosClient.post("/signup", data);
+    },
+    login(data: object) {
+        return axiosClient.post("/login", data);
+    },
+    logout() {
+        return axiosClient.post("/logout");
+    },
+}
+
+export default routes;

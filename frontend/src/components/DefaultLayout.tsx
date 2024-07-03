@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useStateContext } from '../context/AuthProvider'
+import api from "../api/api";
 
 export default function DefaultLayout() {
   const {token, user} = useStateContext();
@@ -9,7 +10,16 @@ export default function DefaultLayout() {
   }
 
   const logout = () => {
-    // localStorage.removeItem('ACCESS_TOKEN');
+    api.logout().then(()=>{
+        setUser({});
+        setToken(null);
+        localStorage.removeItem("ACCESS_TOKEN");
+    }).catch(err => {
+        const response = err.response;
+        if(response && response.status === 422){
+            console.log(response.data.errors);
+        }
+    });
   }
 
   return (
