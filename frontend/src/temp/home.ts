@@ -1,0 +1,15 @@
+export const categories = [
+    "All",
+    "JavaScript",
+    "Python",
+    "C++",
+    "C#",
+    "Java",
+    "PHP",
+    "Ruby",
+    "Rust",
+    "Swift",
+    "Kotlin",
+    "Golang",
+    "Typescript",
+];
