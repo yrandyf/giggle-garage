@@ -3,8 +3,9 @@ import { useStateContext } from "../../context/AuthProvider";
 import api from "../../api/api";
 import PageHeader from "../HomePage/PageHeader";
 import CategoryPills from "../HomePage/CategoryPills";
-import { categories } from "../../temp/home";
+import { categories, videos } from "../../temp/home";
 import { useState } from "react";
+import VideoGridItem from "../HomePage/VideoGridItem";
 
 export default function DefaultLayout() {
   const { token, user } = useStateContext();
@@ -56,6 +57,9 @@ export default function DefaultLayout() {
         <div className="overflow-x-hidden px-8 pb-4">
           <div className="sticky top-0 bg-white z-10 pb-4">
             <CategoryPills categories={categories}  selectedCategory={selectedCategory} onSelect={setSelectedCategory}/>
+          </div>
+          <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+            {videos.map((video) => (<VideoGridItem key={video.id} {...video} postAt={new Date("2023-08-29")} />))}
           </div>
         </div>
       </div>
