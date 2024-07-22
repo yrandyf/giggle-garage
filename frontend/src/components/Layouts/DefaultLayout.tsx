@@ -6,6 +6,7 @@ import CategoryPills from "../HomePage/CategoryPills";
 import { categories, videos } from "../../temp/home";
 import { useState } from "react";
 import VideoGridItem from "../HomePage/VideoGridItem";
+import SideBar from "../HomePage/SideBar";
 
 export default function DefaultLayout() {
   const { token, user } = useStateContext();
@@ -53,7 +54,7 @@ export default function DefaultLayout() {
     <div className="max-h-screen flex flex-col">
       <PageHeader />
       <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
-        <div>SideBar</div>
+        <SideBar />
         <div className="overflow-x-hidden px-8 pb-4">
           <div className="sticky top-0 bg-white z-10 pb-4">
             <CategoryPills categories={categories}  selectedCategory={selectedCategory} onSelect={setSelectedCategory}/>
